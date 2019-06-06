@@ -57,6 +57,9 @@ public class RabbitConfig {
     public static final String ROUTINGKEY_B = "spring-boot-routingKey_B";
     public static final String ROUTINGKEY_C = "spring-boot-routingKey_C";
 
+    public static final String FANOUT_EXCHANGE = "my-mq-exchange_fanout";
+
+
     @Bean
     public CachingConnectionFactory connectionFactory() {
         CachingConnectionFactory connectionFactory = new CachingConnectionFactory(host, port);
@@ -73,26 +76,6 @@ public class RabbitConfig {
     public RabbitTemplate rabbitTemplate() {
         RabbitTemplate template = new RabbitTemplate(connectionFactory());
         return template;
-    }
-
-    /**
-     * 把交换机，队列，通过路由关键字进行绑定
-     * 针对消费者配置
-     * 1. 设置交换机类型
-     * 2. 将队列绑定到交换机
-     FanoutExchange: 将消息分发到所有的绑定队列，无routingkey的概念
-     HeadersExchange ：通过添加属性key-value匹配
-     DirectExchange:按照routingkey分发到指定队列
-     TopicExchange:多关键字匹配
-     */
-    @Bean
-    public DirectExchange defaultExchange() {
-        return new DirectExchange(EXCHANGE_A);
-    }
-
-    @Bean
-    public DirectExchange exchangeB() {
-        return new DirectExchange(EXCHANGE_B);
     }
 
     /**
@@ -116,16 +99,54 @@ public class RabbitConfig {
     public Queue queueC() {
         return new Queue(QUEUE_C, true); //队列持久
     }
+    /**
+     * 把交换机，队列，通过路由关键字进行绑定
+     * 针对消费者配置
+     * 1. 设置交换机类型
+     * 2. 将队列绑定到交换机
+     FanoutExchange: 将消息分发到所有的绑定队列，无routingkey的概念
+     HeadersExchange ：通过添加属性key-value匹配
+     DirectExchange:按照routingkey分发到指定队列
+     TopicExchange:多关键字匹配
+     */
+    @Bean
+    public DirectExchange exchangeA() {
+        return new DirectExchange(EXCHANGE_A);
+    }
+
+    @Bean
+    public DirectExchange exchangeB() {
+        return new DirectExchange(EXCHANGE_B);
+    }
 
 
     //一个交换机可以绑定多个消息队列，也就是消息通过一个交换机，可以分发到不同的队列当中去。
     @Bean
     public Binding binding() {
-        return BindingBuilder.bind(queueA()).to(defaultExchange()).with(RabbitConfig.ROUTINGKEY_A);
+        return BindingBuilder.bind(queueA()).to(exchangeA()).with(RabbitConfig.ROUTINGKEY_A);
     }
     @Bean
     public Binding bindingB(){
         return BindingBuilder.bind(queueB()).to(exchangeB()).with(RabbitConfig.ROUTINGKEY_B);
+    }
+
+    //配置fanout_exchange
+    @Bean
+    FanoutExchange fanoutExchange() {
+        return new FanoutExchange(RabbitConfig.FANOUT_EXCHANGE);
+    }
+    //把所有的队列都绑定到这个交换机上去
+    @Bean
+    Binding bindingExchangeA(Queue queueA,FanoutExchange fanoutExchange) {
+        return BindingBuilder.bind(queueA).to(fanoutExchange);
+    }
+    @Bean
+    Binding bindingExchangeB(Queue queueB, FanoutExchange fanoutExchange) {
+        return BindingBuilder.bind(queueB).to(fanoutExchange);
+    }
+    @Bean
+    Binding bindingExchangeC(Queue queueC, FanoutExchange fanoutExchange) {
+        return BindingBuilder.bind(queueC).to(fanoutExchange);
     }
 
     //另一种消息处理机制 确认机制

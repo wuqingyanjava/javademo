@@ -39,6 +39,12 @@ public class MsgProducer implements RabbitTemplate.ConfirmCallback {
         //把消息放入ROUTINGKEY_B对应的队列当中去，对应的是队列B
         rabbitTemplate.convertAndSend(RabbitConfig.EXCHANGE_B, RabbitConfig.ROUTINGKEY_B, content, correlationId);
     }
+
+    //广播模式，给Fanout交换机发送消息这
+    public void sendMsgFanout(String content) {
+        //里不设置routing_key,因为设置了也无效，发送端的routing_key写任何字符都会被忽略
+        rabbitTemplate.convertAndSend(RabbitConfig.FANOUT_EXCHANGE, "", content);
+    }
     /**
      * 回调
      */
