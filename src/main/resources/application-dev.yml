@@ -7,3 +7,17 @@ spring:
     port: 5672
     username: guest
     password: guest
+
+  datasource:
+    username: root
+    password: 123456
+    url: jdbc:mysql://localhost:3306/crown1?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
+    driver-class-name: com.mysql.jdbc.Driver
+
+mybatis:
+  mapper-locations: classpath*:/mapper/*.xml
+  type-aliases-package: com.example.*
+# ureport Mysql 存储
+ureport.mysql.provider:
+  prefix: ureport
+  disabled: false
