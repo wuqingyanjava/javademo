@@ -18,7 +18,7 @@ import java.util.Map;
  * Modify Log
  **/
 @RestController
-@Api(value="示例controller")
+@Api(value = "示例controller")
 @RequestMapping("/test")
 public class ReportController {
 
@@ -28,9 +28,9 @@ public class ReportController {
     @ApiOperation("测试报表打印接口")
     @GetMapping("/jarsperreport/testprint")
     public void testprint() {
-        Map<String,Object> map = new HashMap<>();
-        map.put("name","Jaychou");
-        map.put("age",38);
-        reportService.response("/TestReport.jrxml",map,new ArrayList<>());
+        Map<String, Object> map = new HashMap<>();
+        map.put("name" , "Jaychou");
+        map.put("age" , 38);
+        reportService.response("/TestReport.jrxml" , map, new ArrayList<>());
     }
 }

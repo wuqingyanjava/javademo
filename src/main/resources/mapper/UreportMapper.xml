@@ -11,34 +11,34 @@
     </resultMap>
 
     <select id="checkExistByName" parameterType="java.lang.String" resultType="java.lang.Integer">
-		select count(*) from ureport_file_tbl where name_ = #{name}
-	</select>
+        select count(*) from ureport_file_tbl where name_ = #{name}
+    </select>
 
     <select id="queryReportFileList" resultMap="ureportFile">
-		select * from ureport_file_tbl
-	</select>
+        select * from ureport_file_tbl
+    </select>
 
     <select id="queryUreportFileEntityByName" resultMap="ureportFile">
-		select * from ureport_file_tbl where name_ = #{name}
-	</select>
+        select * from ureport_file_tbl where name_ = #{name}
+    </select>
 
     <delete id="deleteReportFileByName" parameterType="java.lang.String">
-		delete from ureport_file_tbl where name_ = #{name}
-	</delete>
+        delete from ureport_file_tbl where name_ = #{name}
+    </delete>
 
     <insert id="insertReportFile" parameterType="com.example.ureport.entity.UreportFileEntity">
-		insert into ureport_file_tbl (name_, content_, create_time_, update_time_) values
-		 (#{name}, #{content}, #{createTime}, #{updateTime})
-	</insert>
+        insert into ureport_file_tbl (name_, content_, create_time_, update_time_) values
+        (#{name}, #{content}, #{createTime}, #{updateTime})
+    </insert>
 
 
     <update id="updateReportFile" parameterType="com.example.ureport.entity.UreportFileEntity">
-		update ureport_file_tbl set
-			name_ = #{name} ,
-			content_ = #{content},
-			create_time_ = #{createTime},
-			update_time_ = #{updateTime}
-		    where  id_ = #{id}
-	</update>
+        update ureport_file_tbl set
+        name_ = #{name} ,
+        content_ = #{content},
+        create_time_ = #{createTime},
+        update_time_ = #{updateTime}
+        where id_ = #{id}
+    </update>
 
 </mapper>

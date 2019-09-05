@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.ui.jasperreports.JasperReportsUtils;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
+
 import java.io.OutputStream;
 import java.util.*;
 
@@ -25,7 +26,7 @@ public class ReportService {
     @SneakyThrows
     private JasperReport loadTemplate(final String template) {
         val path = "/report" + template;
-        log.info(String.format("Invoice templates path : %s", path));
+        log.info(String.format("Invoice templates path : %s" , path));
 
         //@Cleanup final InputStream reportInputStream = getClass().getResourceAsStream(templates);
 
@@ -34,6 +35,7 @@ public class ReportService {
         final JasperDesign jasperDesign = JRXmlLoader.load(s);
         return JasperCompileManager.compileReport(jasperDesign);
     }
+
     /**
      * 从指定的模板位置载入打印模板文件，并用map传递数据给报表，渲染为pdf报表
      *
@@ -44,7 +46,7 @@ public class ReportService {
         ServletRequestAttributes servletRequestAttributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
 //        HttpServletRequestt request = servletRequestAttributes.getRequest();
         val report = loadTemplate(path);
-        val response =servletRequestAttributes.getResponse();
+        val response = servletRequestAttributes.getResponse();
 
         OutputStream out = null;
         try {

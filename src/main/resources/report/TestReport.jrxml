@@ -1,32 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.8.0.final using JasperReports Library version 6.8.0-2ed8dfabb690ff337a5797129f2cd92902b0c87b  -->
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="locationTag" pageWidth="310" pageHeight="168" orientation="Landscape" columnWidth="270" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b831b417-c465-431d-9868-04eaf532bd89">
-	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
-	<property name="com.jaspersoft.studio.unit." value="pixel"/>
-	<parameter name="name" class="java.lang.String"/>
-	<parameter name="age" class="java.lang.Integer"/>
-	<queryString>
-		<![CDATA[]]>
-	</queryString>
-	<background>
-		<band splitType="Stretch"/>
-	</background>
-	<detail>
-		<band height="125" splitType="Stretch">
-			<textField>
-				<reportElement x="27" y="7" width="218" height="38" uuid="09002ae3-b7ee-4d4b-9211-09b39b6e7cdf"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="黑体" size="12" isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA["name: "+$P{name}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="26" y="70" width="218" height="38" uuid="559fd335-bf6c-431e-8e6c-351a5daaa15f"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="黑体" size="12" isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA["age:"+$P{age}]]></textFieldExpression>
-			</textField>
-		</band>
-	</detail>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd"
+              name="locationTag" pageWidth="310" pageHeight="168" orientation="Landscape" columnWidth="270"
+              leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20"
+              uuid="b831b417-c465-431d-9868-04eaf532bd89">
+    <property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+    <property name="com.jaspersoft.studio.unit." value="pixel"/>
+    <parameter name="name" class="java.lang.String"/>
+    <parameter name="age" class="java.lang.Integer"/>
+    <queryString>
+        <![CDATA[]]>
+    </queryString>
+    <background>
+        <band splitType="Stretch"/>
+    </background>
+    <detail>
+        <band height="125" splitType="Stretch">
+            <textField>
+                <reportElement x="27" y="7" width="218" height="38" uuid="09002ae3-b7ee-4d4b-9211-09b39b6e7cdf"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="黑体" size="12" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA["name: "+$P{name}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="26" y="70" width="218" height="38" uuid="559fd335-bf6c-431e-8e6c-351a5daaa15f"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="黑体" size="12" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA["age:"+$P{age}]]></textFieldExpression>
+            </textField>
+        </band>
+    </detail>
 </jasperReport>

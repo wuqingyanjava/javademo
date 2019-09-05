@@ -23,11 +23,11 @@ public class RabbitMqController {
     @ApiOperation("测试mq接口")
     @PostMapping("/rabbitmq/sendMsg")
     public Model sendMsg(@RequestParam(value = "用户名") String msg) {
-        for(int i=0;i<5;i++){
-            msgProducer.sendMsgA(msg+i);
+        for (int i = 0; i < 5; i++) {
+            msgProducer.sendMsgA(msg + i);
             //msgProducer.sendMsgB(msg+i);
         }
-        return Model.newSuccess("发送消息："+msg);
+        return Model.newSuccess("发送消息：" + msg);
     }
 
 }

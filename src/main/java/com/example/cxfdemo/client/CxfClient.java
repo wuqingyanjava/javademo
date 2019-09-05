@@ -3,6 +3,7 @@ package com.example.cxfdemo.client;
 import net.sf.json.JSONObject;
 import org.apache.cxf.endpoint.Client;
 import org.apache.cxf.jaxws.endpoint.dynamic.JaxWsDynamicClientFactory;
+
 /**
  * @Description TODO
  * @Author wuqingyan
@@ -19,7 +20,7 @@ public class CxfClient {
         Object[] objects = new Object[0];
         try {
             // invoke("方法名",参数1,参数2,参数3....);
-            objects = client.invoke("sayJson", "周杰伦");
+            objects = client.invoke("sayJson" , "周杰伦");
             JSONObject json = JSONObject.fromObject(objects[0]);
             System.out.println("返回数据:" + json);
         } catch (java.lang.Exception e) {

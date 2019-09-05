@@ -17,7 +17,7 @@ public class Consumer {
         //NameServer地址
         consumer.setNamesrvAddr("localhost:9876");
         //1：topic名字 2：tag名字
-        consumer.subscribe("topic-name-A", "tag-name-A");
+        consumer.subscribe("topic-name-A" , "tag-name-A");
         consumer.registerMessageListener(new MessageListenerConcurrently() {
             @Override
             public ConsumeConcurrentlyStatus consumeMessage(

@@ -19,10 +19,12 @@ public interface IHello {
     Model sayHello(@WebParam(name = "userName") String userName);
 
     @WebMethod
-    public @WebResult String sayGoobye(@WebParam(name = "userName") String userName);
+    public @WebResult
+    String sayGoobye(@WebParam(name = "userName") String userName);
 
     @WebMethod
-    public @WebResult String sayJson(@WebParam(name = "userName")String userName);
+    public @WebResult
+    String sayJson(@WebParam(name = "userName") String userName);
 
 
 }

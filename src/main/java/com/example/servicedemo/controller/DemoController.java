@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
  * Modify Log
  **/
 @RestController
-@Api(value="示例controller")
+@Api(value = "示例controller")
 @RequestMapping("/test")
 public class DemoController {
 
@@ -25,13 +25,14 @@ public class DemoController {
     @PostMapping("/javademo/service/testPost")
     public Model testPost(@RequestParam(value = "userName") String userName) {
 
-        return Model.newSuccess("post你好"+userName);
+        return Model.newSuccess("post你好" + userName);
     }
+
     @ApiOperation("测试get接口")
     @GetMapping("/javademo/service/testGet")
     public Model testGet(@RequestParam(value = "userName") String userName) {
 
-        return Model.newSuccess("get你好"+userName);
+        return Model.newSuccess("get你好" + userName);
     }
 
     @ApiOperation("测试get接口")

@@ -12,7 +12,7 @@ public class Producer {
         DefaultMQProducer producer = new DefaultMQProducer("my-group-name-A");
         producer.setNamesrvAddr("localhost:9876");
         producer.start();
-        Message message = new Message("topic-name-A","tag-name-A","Message : My blog address guozh.net".getBytes());
+        Message message = new Message("topic-name-A" , "tag-name-A" , "Message : My blog address guozh.net".getBytes());
         producer.send(message);
         System.out.println("Message sended");
         producer.shutdown();

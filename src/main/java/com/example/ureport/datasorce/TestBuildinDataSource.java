@@ -17,13 +17,14 @@ public class TestBuildinDataSource implements BuildinDatasource {
 
     @Autowired
     private DataSource dataSource;
+
     @Override
     public String name() {
         return "测试内置数据源";
     }
 
     @Override
-    public Connection getConnection() throws Exception{
+    public Connection getConnection() throws Exception {
         return dataSource.getConnection();
     }
 }

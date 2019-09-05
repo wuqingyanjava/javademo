@@ -9,8 +9,8 @@ import org.springframework.context.annotation.Configuration;
 public class UReportConfig {
 
     @Bean
-    public ServletRegistrationBean buildUReportBean(){
-        return new ServletRegistrationBean(new UReportServlet(),"/ureport/*");
+    public ServletRegistrationBean buildUReportBean() {
+        return new ServletRegistrationBean(new UReportServlet(), "/ureport/*");
     }
 
 }
