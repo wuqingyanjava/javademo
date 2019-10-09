@@ -7,6 +7,9 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 /**
  * @Description TODO
  * @Author wuqingyan
@@ -40,5 +43,13 @@ public class DemoController {
     public Model testGetData() {
         reportService.print();
         return Model.newSuccess("get你好");
+    }
+
+    @ApiOperation("测试get接口")
+    @GetMapping("/javademo/service/login")
+    public Model login(HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        session.setAttribute("isLogin","true");
+        return Model.newSuccess("登陆成功");
     }
 }
