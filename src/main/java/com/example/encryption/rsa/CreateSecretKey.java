@@ -7,13 +7,11 @@ import java.security.KeyPair;
 import java.security.KeyPairGenerator;
 import java.security.PrivateKey;
 import java.security.PublicKey;
-import java.security.SecureRandom;
 import java.security.Signature;
 import java.security.interfaces.RSAPrivateKey;
 import java.security.interfaces.RSAPublicKey;
 import java.security.spec.PKCS8EncodedKeySpec;
 import java.security.spec.X509EncodedKeySpec;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -188,7 +186,7 @@ public class CreateSecretKey {
             System.out.println("密文======="+new String(cipherText));
             //开始解密
             byte[] plainText = decrypt(cipherText,privateKey);
-            System.out.println("解密后明文===== " + new String(plainText));
+            System.out.println("解getPrivateKeyStr()密后明文===== " + new String(plainText));
             System.out.println("验证签名-----------");
 
             String str="被签名的内容";
